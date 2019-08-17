@@ -9,6 +9,7 @@ import Footer from "./components/footer.js";
 import Task from "./views/task.js";
 import PrivateRoute from "./reusable/privateRoute.js";
 import PrivateTask from "./reusable/privateTask.js";
+import UpdateTask from "./components/editTask.js";
 
 import { TaskContextProvider } from "./contexts/taskContext.js";
 
@@ -23,6 +24,7 @@ function App() {
             <PrivateRoute exact path="/login" component={Login} />
             <PrivateRoute exact path="/register" component={Register} />
             <PrivateTask exact path="/task" component={Task} />
+            <PrivateTask exact path="/task/update/:id" component={UpdateTask} />
           </Switch>
         </div>
         <Footer />

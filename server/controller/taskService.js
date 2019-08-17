@@ -86,7 +86,9 @@ export default class TaskService {
 
   static async findOne(req, res, next) {
     try {
-      const getOne = Task.findOne({ _id: req.params.id });
+      const getOne = await Task.findOne({ _id: req.params.id }).populate(
+        "taskFor"
+      );
       if (!getOne) {
         res.status(400).json({ error: `can't found any` });
       } else {

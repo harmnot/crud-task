@@ -9,7 +9,9 @@ const initialState = {
   tasks: null,
   register: "",
   button: false,
-  userTasks: {},
+  task: null,
+  list: [],
+  taskFor: [],
   employeees: [],
   isLogin: localStorage.getItem("token") || false
 };

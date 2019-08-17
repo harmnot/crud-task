@@ -81,6 +81,10 @@ const Task = props => {
     }
   };
 
+  const updateTask = id => {
+    props.history.push(`/task/update/${id}`);
+  };
+
   const button = {
     padding: "0.200rem -1.15rem",
     fontSize: "8px"
@@ -116,6 +120,7 @@ const Task = props => {
                       type="button"
                       className="btn btn-outline-primary m-1"
                       style={button}
+                      onClick={() => updateTask(val._id)}
                     >
                       edit
                     </button>
