@@ -1,9 +1,6 @@
-import React, { useContext, useEffect } from "react";
-import { TaskContext } from "../contexts/taskContext.js";
+import React from "react";
 
 const Home = () => {
-  const { state, dispatch } = useContext(TaskContext);
-
   return (
     <div className="container mt-4">
       <div className="row">
@@ -11,6 +8,7 @@ const Home = () => {
           <img
             className="img-fluid"
             src="https://engineering.taboola.com/wp-content/uploads/2019/01/mtl_robot-796x408.jpg"
+            alt="pic "
           />
         </div>
         <div className="mt-2 mb-5">
