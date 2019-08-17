@@ -40,7 +40,6 @@ const AddTask = () => {
   }, []);
 
   const handleCheckbox = e => {
-    console.log(e.target.value);
     setAssign(
       chooseEmployee.set(`${e.target.name}-${e.target.value}`, e.target.checked)
     );
@@ -93,7 +92,6 @@ const AddTask = () => {
             token: localStorage.getItem("token")
           }
         });
-        console.log(data, "tambahhhhhh");
         sendTaskToCtx._id = data.id;
         dispatch({ type: "ADD_TASK", payload: sendTaskToCtx });
         Swal.fire({
@@ -106,7 +104,6 @@ const AddTask = () => {
         });
         title.current.value = "";
       } catch (error) {
-        console.log(error);
         Swal.fire({
           title: "Error",
           timer: 2000,

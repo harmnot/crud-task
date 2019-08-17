@@ -15,7 +15,6 @@ const AddTask = props => {
     runAPI
       .get(`api/task/${id}`)
       .then(({ data }) => {
-        console.log(data, "updatteee here");
         if (!didCancel) {
           dispatch({ type: "FETCH_DATA_LIST", payload: data.data.list });
           dispatch({ type: "FETCH_DATA_TASKFOR", payload: data.data.taskFor });
@@ -77,7 +76,6 @@ const AddTask = props => {
             }
           }
         );
-        console.log(data, "berhasil");
         setTimeout(() => {
           props.history.push("/task");
         }, 2000);

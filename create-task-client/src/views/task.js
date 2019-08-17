@@ -15,7 +15,6 @@ const Task = props => {
       .then(({ data: { data: data } }) => {
         if (!didCancel) {
           dispatch({ type: "FETCH_TASK", payload: data });
-          console.log(data, "ini data");
         }
       })
       .catch(error => {
@@ -66,7 +65,6 @@ const Task = props => {
         dispatch({ type: "DELETE_TASK", payload: { index } });
       }
     } catch (error) {
-      console.log(error.response, "inniii error");
       Swal.fire({
         title: "Error!",
         text: error.response.data.error,

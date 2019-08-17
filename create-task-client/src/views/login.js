@@ -45,7 +45,6 @@ const Login = props => {
       e.preventDefault();
       try {
         const { data } = await runAPI.post("api/user/login", login);
-        console.log(data);
         localStorage.setItem("token", data.createToken);
         localStorage.setItem("name", data.data.name);
         localStorage.setItem("email", data.data.email);
