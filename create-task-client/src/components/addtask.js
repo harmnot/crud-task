@@ -48,71 +48,80 @@ const AddTask = () => {
 
   const addThisTask = async e => {
     e.preventDefault();
-    const theLists = [];
-    const theEmployees = [];
-    const ctx = [];
-    for (let i of list) {
-      theLists.push({ listName: i });
-    }
-    for (let [key, val] of chooseEmployee) {
-      if (val === true) {
-        let [ids, names] = key.split("-");
-        ctx.push({
-          _id: ids,
-          name: names
-        });
-        theEmployees.push(ids);
+
+    if (title.current.value === "" || list.length === 0) {
+      Swal.fire({
+        title: "Warning",
+        text: "please input valid task",
+        type: "warning",
+        timer: 1800,
+        showCancelButton: false,
+        showConfirmButton: false
+      });
+    } else {
+      const theLists = [];
+      const theEmployees = [];
+      const ctx = [];
+      for (let i of list) {
+        theLists.push({ listName: i });
       }
-    }
-    const sendTask = {
-      title: title.current.value,
-      list: theLists,
-      taskFor: theEmployees
-    };
-
-    const sendTaskToCtx = {
-      title: title.current.value,
-      list: theLists,
-      taskFor: ctx
-    };
-
-    try {
-      const { data } = await runAPI.post("api/task/addtask", sendTask, {
-        headers: {
-          token: localStorage.getItem("token")
+      for (let [key, val] of chooseEmployee) {
+        if (val === true) {
+          let [ids, names] = key.split("-");
+          ctx.push({
+            _id: ids,
+            name: names
+          });
+          theEmployees.push(ids);
         }
-      });
-      console.log(data, "tambahhhhhh");
-      dispatch({ type: "ADD_TASK", payload: sendTaskToCtx });
-      Swal.fire({
-        title: "Success",
-        timer: 2000,
-        text: "successfully add task",
-        type: "success",
-        showConfirmButton: false,
-        showCancelButton: false
-      });
-      title.current.value = "";
-    } catch (error) {
-      console.log(error);
-      Swal.fire({
-        title: "Error",
-        timer: 2000,
-        text: error.response.data.error,
-        type: "error",
-        showConfirmButton: false,
-        showCancelButton: false
-      });
+      }
+      const sendTask = {
+        title: title.current.value,
+        list: theLists,
+        taskFor: theEmployees
+      };
+
+      const sendTaskToCtx = {
+        title: title.current.value,
+        list: theLists,
+        taskFor: ctx
+      };
+
+      try {
+        const { data } = await runAPI.post("api/task/addtask", sendTask, {
+          headers: {
+            token: localStorage.getItem("token")
+          }
+        });
+        console.log(data, "tambahhhhhh");
+        sendTaskToCtx._id = data.id;
+        dispatch({ type: "ADD_TASK", payload: sendTaskToCtx });
+        Swal.fire({
+          title: "Success",
+          timer: 2000,
+          text: "successfully add task",
+          type: "success",
+          showConfirmButton: false,
+          showCancelButton: false
+        });
+        title.current.value = "";
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          title: "Error",
+          timer: 2000,
+          text: error.response.data.error,
+          type: "error",
+          showConfirmButton: false,
+          showCancelButton: false
+        });
+      }
+
+      document
+        .querySelectorAll("input[type=checkbox]")
+        .forEach(el => (el.checked = false));
+      setList([]);
     }
-
-    document
-      .querySelectorAll("input[type=checkbox]")
-      .forEach(el => (el.checked = false));
-    setList([]);
-  };
-
-  const width = {
-    width: "200%"
   };
 
   const f_s = {

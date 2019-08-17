@@ -1,7 +1,5 @@
-import React, { useReducer, createContext, useEffect } from "react";
+import React, { useReducer, createContext } from "react";
 import taskReducer from "../reducers/taskReducer.js";
-import Swal from "sweetalert2";
-import runAPI from "../API.js/runAPI.js";
 
 const TaskContext = createContext();
 

@@ -17,7 +17,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
           {" "}
-          TASKkkk{" "}
+          YourTask{" "}
         </Link>
 
         <button
@@ -50,7 +50,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/task">
                   {" "}
-                  Task{" "}
+                  Tasks{" "}
                 </Link>
               </li>
             )}

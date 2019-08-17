@@ -29,7 +29,11 @@ export default class TaskService {
       );
       res
         .status(200)
-        .json({ result: `successfully created`, data: pushThePeople });
+        .json({
+          result: `successfully created`,
+          data: pushThePeople,
+          id: createTask._id
+        });
     } catch (err) {
       next(err);
     }

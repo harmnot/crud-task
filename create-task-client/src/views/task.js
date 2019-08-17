@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import ListTask from "../components/listTask.js";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useContext } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import runAPI from "../API.js/runAPI.js";
-import Login from "./login.js";
 import Swal from "sweetalert2";
 import { TaskContext } from "../contexts/taskContext.js";
 import AddTask from "../components/addtask.js";
@@ -185,6 +182,7 @@ const Task = props => {
           </div>
         )}
       </div>
+      <div className="mt-4"></div>
     </Router>
   );
 };
