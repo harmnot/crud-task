@@ -12,6 +12,11 @@ const Navbar = () => {
     dispatch({ type: "LOGOUT" });
   };
 
+  const color = {
+    border: " 1px solid black",
+    color: "blue"
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -62,12 +67,19 @@ const Navbar = () => {
                 </Link>
               </li>
             ) : (
-              <li className="nav-item" onClick={logout}>
-                <Link className="nav-link" to="/">
-                  {" "}
-                  Logout{" "}
-                </Link>
-              </li>
+              <>
+                <li className="nav-item" onClick={logout}>
+                  <Link className="nav-link" to="/">
+                    {" "}
+                    Logout{" "}
+                  </Link>
+                </li>
+                <li className="nav-item ml-4">
+                  <span className="nav-link" style={color}>
+                    {localStorage.getItem("role")}
+                  </span>
+                </li>
+              </>
             )}
           </ul>
         </div>
