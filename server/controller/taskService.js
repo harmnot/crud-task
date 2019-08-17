@@ -3,14 +3,9 @@ import { Person, Task } from "../model/index.js";
 export default class TaskService {
   static async getAll(req, res, next) {
     try {
-      const allTask = await Task.find({}).populate({
-        path: "taskFor",
-        populate: {
-          path: "task",
-          model: "Task"
-        }
-      });
-
+      const allTask = await Task.find({})
+        .populate("taskFor")
+        .populate("task");
       if (!allTask) {
         next("router");
       } else {
@@ -32,12 +27,9 @@ export default class TaskService {
         { _id: createTask._id },
         { $addToSet: { taskFor } }
       );
-
-      const pushTask = await Person.update(
-        { _id: req.user._id },
-        { $addToSet: { task: createTask._id } }
-      );
-      res.status(200).json({ result: `successfully created`, data: pushTask });
+      res
+        .status(200)
+        .json({ result: `successfully created`, data: pushThePeople });
     } catch (err) {
       next(err);
     }
@@ -70,6 +62,7 @@ export default class TaskService {
       const taskDeleted = await Task.findOneAndDelete(req.params.id);
       res.status(200).json({ result: "successfully deleted" });
     } catch (err) {
+      console.log(err, "ini errpor");
       next(err);
     }
   }

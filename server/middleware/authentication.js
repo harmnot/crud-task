@@ -37,7 +37,10 @@ const checkRole = async (req, res, next) => {
 const isAllowToCRUD = async (req, res, next) => {
   try {
     const isAllow = await Task.findOne({ _id: req.params.id });
-    if (!isAllow.taskFor.includes(req.user._id)) {
+    if (
+      !isAllow.taskFor.includes(req.user._id) &&
+      isAllow.taskFor.length !== 0
+    ) {
       res.status(400).json({
         error: "NOT AUTHORIZATION because you are not in the list task for"
       });

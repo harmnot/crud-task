@@ -49,6 +49,7 @@ const Login = props => {
         localStorage.setItem("token", data.createToken);
         localStorage.setItem("name", data.data.name);
         localStorage.setItem("email", data.data.email);
+        localStorage.setItem("role", data.data.role);
         localStorage.setItem("id", data.data._id);
         dispatch({ type: "LOGINED" });
         dispatch({ type: "BUTTON", payload: { button: false } });

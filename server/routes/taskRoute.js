@@ -9,7 +9,7 @@ import {
 
 route.get("/tasks", TaskService.getAll);
 route.get("/:id", TaskService.findOne);
-route.post("/addtask", auth, TaskService.addTask);
+route.post("/addtask", auth, checkRole, TaskService.addTask);
 route.put("/:id", auth, checkRole, isAllowToCRUD, TaskService.updateTask);
 route.delete("/:id", auth, checkRole, isAllowToCRUD, TaskService.deleteTask);
 route.delete(

@@ -59,4 +59,14 @@ export default class UserService {
       next(e);
     }
   }
+
+  static async findAll(req, res, next) {
+    try {
+      const getAll = await Person.find({});
+      res.status(200).json({ result: `gothca`, data: getAll });
+    } catch (e) {
+      console.log("errror disii");
+      next(e);
+    }
+  }
 }

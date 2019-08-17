@@ -1,13 +1,16 @@
 import React, { useReducer, createContext, useEffect } from "react";
 import taskReducer from "../reducers/taskReducer.js";
+import Swal from "sweetalert2";
+import runAPI from "../API.js/runAPI.js";
 
 const TaskContext = createContext();
 
 const initialState = {
-  tasks: [],
+  tasks: null,
   register: "",
   button: false,
   userTasks: {},
+  employeees: [],
   isLogin: localStorage.getItem("token") || false
 };
 
