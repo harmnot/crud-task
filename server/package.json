@@ -4,6 +4,7 @@
   "description": "crud task",
   "main": "app.js",
   "scripts": {
+    "start": "NODE_ENV=production nodemon --exec babel-node app.js",
     "dev": "nodemon --exec babel-node app.js",
     "test": "NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --timeout 18000  --recursive --require @babel/polyfill --require @babel/register --exit"
   },
